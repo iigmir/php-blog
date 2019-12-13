@@ -1,0 +1,21 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    background: #fefefe;
+    font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #0a0a0a;
+}
+
+.hide
+{
+    display: none;
+}
+
+main
+{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
