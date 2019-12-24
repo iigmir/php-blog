@@ -5,6 +5,18 @@
     function href( $input ) { return "/article/" . $input; };
     $app = new Article;
     $my_contents = $app->get_contents();
+    function array_to_html( $input_array, $app )
+    {
+        $str = "";
+        foreach( $input_array as $item )
+        {
+            $readable_tag = $app->get_readable_tag($item->category_id);
+            $link = '<a class="header" href="' .href($item->id). '">' .$item->title. '</a>';
+            $desc = '<div class="description"> <p>' .$readable_tag. '</p></div>';
+            $str .= '<section class="ts card"><div class="content">' . $link . $desc . '</div></section>';
+        }
+        return $str;
+    }
 ?>
 <head>
     <meta charset="UTF-8" />
@@ -18,21 +30,12 @@
     <main class="ts container">
         <h1 class="ts header">露比的銳思</h1>
         <article>
-            <?php
-            foreach ( array_reverse($my_contents) as $item )
-            {
-                $readable_tag = $app->get_readable_tag($item->category_id);
-            ?> 
-            <div class="ts card">
-                <div class="content">
-                    <?php echo( "<a class='header' href='".href($item->id)."'>$item->title</a>" ); ?> 
-                    <div class="description">
-                        <p><?php echo($readable_tag) ?></p>
-                    </div>
-                </div>
-            </div>
-            <?php
-            }
+            <?php 
+                $ary = array_reverse( array_slice($my_contents,0,4) ); // 1sec
+                // $ary = $my_contents; // 15sec
+                // var_dump( array_slice($my_contents,0,4) );
+                // var_dump( $ary );
+                echo( array_to_html( $ary, $app ) );
             ?> 
         </article>
     </main>
