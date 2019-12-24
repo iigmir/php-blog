@@ -29,15 +29,22 @@
 <body>
     <main class="ts container">
         <h1 class="ts header">露比的銳思</h1>
-        <article>
+        <article id="articles">
             <?php 
-                $ary = array_reverse( array_slice($my_contents,0,4) ); // 1sec
-                // $ary = $my_contents; // 15sec
-                // var_dump( array_slice($my_contents,0,4) );
-                // var_dump( $ary );
+                $ary = array_reverse( array_slice($my_contents,-5,5,true) );
                 echo( array_to_html( $ary, $app ) );
             ?> 
         </article>
+        <template id="article-component">
+            <section class="ts card">
+                <div class="content">
+                    <a class="header" href="#"></a>
+                    <div class="description">
+                        <p></p>
+                    </div>
+                </div>
+            </section>
+        </template>
     </main>
     <script src="./index.js"></script>
 </body>
