@@ -1,5 +1,5 @@
 <?php
-require( "php-markdown-lib/Michelf/Markdown.inc.php" );
+require( "php-markdown-lib/Michelf/MarkdownExtra.inc.php" );
 use Michelf\Markdown;
 
 function get_http_response_code($url)
