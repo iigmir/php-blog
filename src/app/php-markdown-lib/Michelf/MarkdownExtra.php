@@ -76,7 +76,7 @@ class MarkdownExtra extends \Michelf\Markdown {
 	 * setting this to true will put attributes on the `pre` tag instead.
 	 * @var boolean
 	 */
-	public $code_attr_on_pre = false;
+	public $code_attr_on_pre = true;
 
 	/**
 	 * Predefined abbreviations.
