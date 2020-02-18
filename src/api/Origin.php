@@ -13,21 +13,17 @@ class Origin {
      * @var Origin
      */
     public $request_origin;
-
-    public function __construct( $request_origin ) {
+    // Methods
+    public function __construct( $request_origin )
+    {
         $this->request_origin = $request_origin;
     }
     public function set_request_origin( $input )
     {
         $this->$request_origin = $input;
     }
-    public function request_origin( $server_name )
+    public function allow_credentials()
     {
-        return isset( $server_name ) ? $server_name : null;
-    }
-    public function allow_credentials( $server_name )
-    {
-        $obj = new Origin;
-        return in_array( $obj->request_origin( $server_name ), $obj->acceptable_origin );
+        return in_array( $this->request_origin, $this->acceptable_origin );
     }
 }

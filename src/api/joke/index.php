@@ -1,13 +1,11 @@
 <?php
-$request_origin = isset( $_SERVER["SERVER_NAME"] ) ? $_SERVER["SERVER_NAME"] : null;
-$acceptable_origin = [
-    "localhost", "127.0.0.1",
-    "iigmir.github.io", "iismmx.000webhostapp.com",
-];
-$allow_credentials = in_array( $request_origin, $acceptable_origin );
+require( "../Origin.php" );
 $data = array();
 
-if ( $allow_credentials )
+$new_origin = new Origin( $_SERVER["SERVER_NAME"] );
+$request_origin = $new_origin->request_origin;
+
+if ( $new_origin->allow_credentials() )
 {
     // Origin header
     header("Access-Control-Allow-Origin: ${request_origin}");
